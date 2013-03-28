@@ -10,11 +10,11 @@ var request = require('request');
  * Trivial example of pulling in a shared config file.
  */
 exports.getConfig = function(params, callback) {
-  request({uri: 'http://search.twitter.com/search.json?q=feedhenry', method: 'GET'},
+  request({uri: 'http://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=1271d5f82c4bce4a546a487dd17a10f4&format=json&nojsoncallback=1&api_sig=6b429daec1a9f1a6371143662c592649', method: 'GET'},
   function (err, response, body) {
     // just apply the results object to the data we send back.
     var search = JSON.parse(body);
-    callback(null, {config : search.results});
+    callback(null, {config : search});
   });
 };
 
