@@ -1,12 +1,12 @@
 Simple Web request Tutorial
 =====================
 
-1) Log into your newly created NodeJS enabled http://demo2.feedhenry.com account
-2) Click on ‘Create an App’, then ‘Create an App From Scratch’.
-3) Call your app ‘Simple Web Request’, and give it a description.
-4) Select next, then finish.
-5) We’re going to write some NodeJS code to do a simple web request, and return raw JSON into our application. First, we need to include the module we’ll be using to do this, called ‘request’.
-Edit the file in the cloud directory called ‘package.json’, and add the content shown:
+1) Log into your newly created FeedHenry account  
+2) Click on ‘Create an App’, then ‘Create an App From Scratch’.  
+3) Call your app ‘Simple Web Request’, and give it a description.    
+4) Select next, then finish.  
+5) We’re going to write some NodeJS code to do a simple web request, and return raw JSON into our application. First, we need to include the module we’ll be using to do this, called ‘request’.  
+Edit the file in the cloud directory called ‘package.json’, and add the content shown:  
 ```javascript
 {
   "name": "fh-app",
