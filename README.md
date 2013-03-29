@@ -17,7 +17,7 @@ Edit the file in the cloud directory called ‘package.json’, and add the cont
   }
 }
 ```  
-[See The Code](https://github.com/cianclarke/Simple-Web-Request/commit/1eed15f034205762ee4e6387d92e054a953f1831)
+[See The Code](https://github.com/learnhenry/Simple-Web-Request/commit/1eed15f034205762ee4e6387d92e054a953f1831)
   
 Here’s the cloud code we’re going to use to perform the request – add it to cloud/main.js:
 ```javascript
@@ -34,8 +34,8 @@ exports.getConfig = function(params, callback) {
 };
 ```  
   
-[See The Code](https://github.com/cianclarke/Simple-Web-Request/commit/4079d32cc2392202a8fe83071478496cd2a52bb8)  
+[See The Code](https://github.com/learnhenry/Simple-Web-Request/commit/4079d32cc2392202a8fe83071478496cd2a52bb8)  
 
 6) Save all & verify this works in the studio by clicking the “Execute cloud action call” button in the previous.  
 7) Try using some other JSON API’s on the web. All you should have to change is the request and the piece of JSON returned (as underlined above).  
-[See The Code](https://github.com/cianclarke/Simple-Web-Request/commit/598111bbd870f1944751afe54b6996720f382f37)
+[See The Code](https://github.com/learnhenry/Simple-Web-Request/commit/598111bbd870f1944751afe54b6996720f382f37)
