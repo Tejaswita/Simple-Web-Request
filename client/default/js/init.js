@@ -30,6 +30,10 @@ $fh.ready(function() {
       doMashup();
     }, function(msg, err) {
       alert(msg);
+      if (err && err.message && (err.message === "device_purge_data" || err === err.message === "user_purge_data")){
+        localStorage.clear();
+        document.body.innerHTML = "";
+      }
     });
 
 
