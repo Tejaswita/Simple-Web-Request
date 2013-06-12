@@ -18,6 +18,7 @@ $fh.ready(function() {
 
     $fh.auth({
       "policyId": "FeedHenry",
+      "clientToken" : "dn6u3NNrp2gLIAo5bNJqfyfD",
       "params": {
         "userId": username,
         "password": password
