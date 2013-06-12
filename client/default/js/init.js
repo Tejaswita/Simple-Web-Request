@@ -27,36 +27,12 @@ $fh.ready(function() {
       alert('succ');
       // Authentication successful - store sessionToken in variable
       var sessionToken = res.sessionToken;
+      doMashup();
     }, function(msg, err) {
       alert(msg);
     });
 
-    var lastHash = localStorage.getItem('hash');
-    $fh.act(
-      {
-        act:'mashup',
-        req : {
-          hash : lastHash
-        }
-      },
-      function(res) {
-        localStorage.setItem('hash', res.hash);
-        localStorage.setItem('content', JSON.stringify(res));
 
-        renderContent(res);
-
-
-      },
-      function(code,errorprops,params) {
-        var content = localStorage.getItem('content');
-        if (content){
-          var c = JSON.parse(content);
-          renderContent(c);
-        }else{
-          alert('No offline data found');
-        }
-      }
-    );
   };
 });
 
@@ -69,4 +45,33 @@ function renderContent(res){
 
 
   }
+}
+
+function doMashup(){
+  var lastHash = localStorage.getItem('hash');
+  $fh.act(
+  {
+    act:'mashup',
+    req : {
+      hash : lastHash
+    }
+  },
+  function(res) {
+    localStorage.setItem('hash', res.hash);
+    localStorage.setItem('content', JSON.stringify(res));
+
+    renderContent(res);
+
+
+  },
+  function(code,errorprops,params) {
+    var content = localStorage.getItem('content');
+    if (content){
+      var c = JSON.parse(content);
+      renderContent(c);
+    }else{
+      alert('No offline data found');
+    }
+  }
+  );
 }
