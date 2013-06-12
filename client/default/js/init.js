@@ -13,16 +13,59 @@ $fh.ready(function() {
   document.getElementById('run_button').onclick = function() {
     // Invoke a cloud action call to get the remote configuration
     // See: http://docs.feedhenry.com/wiki/Actions
+    var username = document.getElementById('username').value,
+    password = document.getElementById('password').value;
+
+    $fh.auth({
+      "policyId": "FeedHenry",
+      "params": {
+        "userId": username,
+        "password": password
+      }
+    }, function(res) {
+      alert('succ');
+      // Authentication successful - store sessionToken in variable
+      var sessionToken = res.sessionToken;
+    }, function(msg, err) {
+      alert(msg);
+    });
+
+    var lastHash = localStorage.getItem('hash');
     $fh.act(
       {
-        act:'getConfig'
+        act:'mashup',
+        req : {
+          hash : lastHash
+        }
       },
       function(res) {
-        document.getElementById('cloudConfig').innerHTML = "<p>" + JSON.stringify(res.config) + "</p>";
+        localStorage.setItem('hash', res.hash);
+        localStorage.setItem('content', JSON.stringify(res));
+
+        renderContent(res);
+
+
       },
       function(code,errorprops,params) {
-        alert('An error occured: ' + code + ' : ' + errorprops);
+        var content = localStorage.getItem('content');
+        if (content){
+          var c = JSON.parse(content);
+          renderContent(c);
+        }else{
+          alert('No offline data found');
+        }
       }
     );
   };
 });
+
+function renderContent(res){
+  document.getElementById('cloudConfig').innerHTML = "<h4>Last timestamp: " +res.timestamp+ "</h4>";
+  for (var i=0; i<res.blogspot.length; i++){
+    var b = res.blogspot[i];
+    document.getElementById('cloudConfig').innerHTML += "<h1>" +b.title + "</h1>";
+    //document.getElementById('cloudConfig').innerHTML += "<p>" +b.content + "</p>";
+
+
+  }
+}
